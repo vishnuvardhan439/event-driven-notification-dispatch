@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: event-driven-notification-dispatcher
+    env: node
+    plan: free
+    region: oregon
+    buildCommand: "npm install"
+    startCommand: "npm start"
+    envVars:
+      - key: PORT
+        value: "3000"
+      - key: DB_PATH
+        value: "./data/notifications.db"
+    healthCheckPath: "/health"
+    autoDeploy: true
+    instanceCount: 1
